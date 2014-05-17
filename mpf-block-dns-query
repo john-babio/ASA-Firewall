@@ -1,0 +1,17 @@
+!Quick and dirty cli for dropping dns queries for a particular domain.
+!
+regex domains “\.facebook\.com”
+!
+class-map type regex match-any DomainBlockList
+description Blocked Domains
+match regex domains
+!
+policy-map type inspect dns PM-DNS-inspect
+parameters
+message-length maximum 512
+match domain-name regex class DomainBlockList
+drop-connection log
+!
+policy-map global_policy
+class inspection_default
+inspect dns PM-DNS-inspect
