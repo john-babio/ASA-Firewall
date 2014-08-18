@@ -24,3 +24,4 @@ policy-map dynamic-filter_snoop_policy
  class dynamic-filter_snoop_class
  inspect dns dynamic-filter-snoop
 service-policy dynamic-filter_snoop_policy interface outside
+
